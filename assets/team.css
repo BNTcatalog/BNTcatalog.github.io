@@ -1,0 +1,58 @@
+/* Team Page Styles */
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px auto;
+    width: 100%;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 220px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.3em;
+    color: #505050;
+}
+
+.team-member .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.team-member .email,
+.team-member .affiliation {
+    font-size: 0.9em;
+    margin: 2px 0;
+}
+
+/* Mobile responsive adjustments */
+@media only screen and (max-width: 1100px) {
+    .team-container {
+        gap: 20px;
+    }
+    
+    .team-member {
+        width: 45%;
+    }
+    
+    .team-member img {
+        width: 150px;
+        height: 150px;
+    }
+} 

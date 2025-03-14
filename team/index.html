@@ -1,56 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <base href="..">
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
-    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css">
-    <meta name="description" content="BNT Catalog">
-    <meta name="resource-type" content="document">
-    <meta name="distribution" content="global">
-    <meta name="KeyWords" content="BNT">
-    <title>BNT Catalog</title>
-  </head>
-  <body>
-    <div class="banner"> <img src="assets/banner_yanqing.jpg" alt="BNTcat Banner">
-      <div class="top-left"> <span class="title1">BNT Catalog </span>
-      </div>
-      <div class="cite">Image taken by Zhuoxiao Wang (王卓骁) at Haituo Mountain,
-        Yanqing</div>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <base href="..">
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" type="text/css" media="all" href="assets/main.css">
+  <link rel="stylesheet" type="text/css" media="all" href="assets/team.css">
+  <meta name="description" content="BNT Catalog">
+  <meta name="resource-type" content="document">
+  <meta name="distribution" content="global">
+  <meta name="KeyWords" content="BNT">
+  <title>BNT Catalog</title>
+</head>
+
+<body>
+  <div class="banner"> <img src="assets/banner_yanqing.jpg" alt="BNTcat Banner">
+    <div class="top-left"> <span class="title1">BNT Catalog </span>
     </div>
-    <table class="navigation">
-      <tbody>
-        <tr>
-          <td class="navigation"> <a title="BNT Home Page"
+    <div class="cite">Image taken by Zhuoxiao Wang (王卓骁) at Haituo Mountain,
+      Yanqing</div>
+  </div>
+  <table class="navigation">
+    <tbody>
+      <tr>
+        <td class="navigation"> <a title="BNT Home Page" href=".">Home</a> </td>
+        <td class="navigation"> <a class="current" title="BNT Team" href="team">BNT Team</a>
+        </td>
+        <td class="navigation"> <a title="Contact Us" href="contact">Contact</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <h2>Coordinators</h2>
 
-              href=".">Home</a> </td>
-          <td class="navigation"> <a class="current" title="BNT Team" href="team">BNT Team</a>
-          </td>
-          <td class="navigation"> <a title="Contact Us" href="contact">Contact</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
-    <h2>BNT Team</h2>
-    <p>[TBD]</p>
+  <div class="team-container" id="team-container">
+    <!-- Team members will be loaded here dynamically -->
+  </div>
 
-    <table class="sponsors">
-      <tbody>
-        <tr>
-          <td class="sponsor"> <a href="https://www.tsinghua.edu.cn/"> <img src="assets/Tsinghua.jpg"
+  <script>
+    // Function to load team member data
+    async function loadTeamMembers() {
+      try {
+        // List of team member JSON files
+        const teamMembers = [
+          'team/@team/pleaseadd_here.json',
+          'team/@team/zhecheng_hu.json',
+        ];
 
-                alt="Tsinghua University"> </a> </td>
-          <td class="sponsor_gap"> <br>
-          </td>
-          <td class="sponsor"> <a href="https://astro.tsinghua.edu.cn/"> <img
+        const teamContainer = document.getElementById('team-container');
 
-                src="assets/doa.jpg" alt="Department of Astronomy, Tsinghua University"> </a> </td>
-        </tr>
-      </tbody>
-    </table>
-    <footer> ©BNT Catalog &nbsp;|&nbsp; Based
-      on the template by <a href="https://github.com/mikepierce">Mike Pierce</a>
-    </footer>
-  </body>
+        // Load each team member
+        for (const memberFile of teamMembers) {
+          const response = await fetch(memberFile);
+          const member = await response.json();
+
+          // Create team member element
+          const memberElement = document.createElement('div');
+          memberElement.className = 'team-member';
+
+          // Create image element
+          const img = document.createElement('img');
+          img.src = member.photo;
+          img.alt = member.name;
+          memberElement.appendChild(img);
+
+          // Create name element
+          const name = document.createElement('h3');
+          name.textContent = member.name;
+          memberElement.appendChild(name);
+
+          // Create title element if it exists
+          if (member.title) {
+            const title = document.createElement('div');
+            title.className = 'title';
+            title.textContent = member.title;
+            memberElement.appendChild(title);
+          }
+
+          // Create email element
+          const email = document.createElement('div');
+          email.className = 'email';
+          email.textContent = member.email;
+          memberElement.appendChild(email);
+
+          // Create affiliation element if it exists
+          if (member.affiliation) {
+            const affiliation = document.createElement('div');
+            affiliation.className = 'affiliation';
+            affiliation.textContent = member.affiliation;
+            memberElement.appendChild(affiliation);
+          }
+
+          // Add to container
+          teamContainer.appendChild(memberElement);
+        }
+      } catch (error) {
+        console.error('Error loading team members:', error);
+      }
+    }
+
+    // Load team members when the page loads
+    window.addEventListener('DOMContentLoaded', loadTeamMembers);
+  </script>
+
+  <table class="sponsors">
+    <tbody>
+      <tr>
+        <td class="sponsor"> <a href="https://www.tsinghua.edu.cn/"> <img src="assets/Tsinghua.jpg"
+              alt="Tsinghua University"> </a> </td>
+        <td class="sponsor_gap"> <br>
+        </td>
+        <td class="sponsor"> <a href="https://astro.tsinghua.edu.cn/"> <img src="assets/doa.jpg"
+              alt="Department of Astronomy, Tsinghua University"> </a> </td>
+      </tr>
+    </tbody>
+  </table>
+  <footer> ©BNT Catalog &nbsp;|&nbsp; Based
+    on the template by <a href="https://github.com/mikepierce">Mike Pierce</a>
+  </footer>
+</body>
+
 </html>
