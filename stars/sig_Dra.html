@@ -10,6 +10,36 @@
     <meta name="distribution" content="global">
     <meta name="KeyWords" content="BNT, * sig Dra">
     <title>BNT Catalog - * sig Dra</title>
+    <style>
+      /* Add your custom styles here */
+      .csv-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .csv-table th, .csv-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .csv-table th {
+        background-color: #f2f2f2;
+        text-align: left;
+      }
+      .csv-table td {
+        width: 25%; /* Adjust the width as needed */
+      }
+      .csv-table .col1 {
+        width: 20%; /* Adjust the width for the first column */
+      }
+      .csv-table .col2 {
+        width: 30%; /* Adjust the width for the second column */
+      }
+      .csv-table .col3 {
+        width: 25%; /* Adjust the width for the third column */
+      }
+      .csv-table .col4 {
+        width: 25%; /* Adjust the width for the fourth column */
+      }
+    </style>
   </head>
   <body>
     <div class="banner"> <img src="assets/banner_yanqing.jpg" alt="BNTcat Banner">
@@ -30,7 +60,6 @@
     <h2>* sig Dra</h2>
     <div class="content">
       <p>This is the BNT Catalog page for * sig Dra.</p>
-      <p>Visual magnitude: 4.672</p>
 
       <div id="spreadsheet-data"></div>
 
@@ -49,7 +78,7 @@
     <script>
       // Function to fetch and display CSV data from Google Sheets
       async function fetchCSVData() {
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRu0KKLUPy5Yrz6D1HghKVpZ4KH43BoZcWdenxoZH7foSUyh5c_nRnTxWNxD3Qphiq-tYrqRficjE_4/pub?output=csv'; 
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRu0KKLUPy5Yrz6D1HghKVpZ4KH43BoZcWdenxoZH7foSUyh5c_nRnTxWNxD3Qphiq-tYrqRficjE_4/pub?output=csv';
 
         const response = await fetch(csvUrl);
         const csvText = await response.text();
