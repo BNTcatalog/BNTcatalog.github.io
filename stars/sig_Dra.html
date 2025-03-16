@@ -31,20 +31,40 @@
     <div class="content">
       <p>This is the BNT Catalog page for * sig Dra.</p>
       <p>Visual magnitude: 4.672</p>
-      <!-- Insert a 3x3 table below --> 
-      <table class="content">
-        <tbody>
-          <tr>
-            <td class="content"> <b>RA</b> </td>
-            <td class="content"> <b>Dec</b> </td>
-            <td class="content"> <b>Distance</b> </td>
-          </tr>
-          <tr>
-            <td class="content"> 17h 32m 46.9s </td>
-            <td class="content"> +52° 54' 54" </td>
-            <td class="content"> 86.0 ly </td>
-          </tr>
-        </tbody>
+      <!-- Insert a java script to read in and display a shared google drive spreadsheet -->
+      <div id="content"></div>
+
+    <script>
+        // Replace with your modified Google Drive CSV URL
+        //const csvUrl = 'https://docs.google.com/spreadsheets/d/1ubPHuZ7dRHtaTW7BWrP95u3S0dl4-F6Ai2-8IKB1htI/edit?usp=sharing';
+        const csvUrl = 'https://drive.google.com/file/d/1buHQ5VQo3YRHPbcQWN8UlQSJ-tnj2nEH/view?usp=sharing'
+
+        // Fetch and process CSV data
+        fetch(csvUrl)
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.split('\n');
+                const contentDiv = document.getElementById('content');
+                
+                rows.forEach((row, index) => {
+                    // Skip header row
+                    if (index === 0) return;
+
+                    const columns = row.split(',');
+                    const userElement = document.createElement('div');
+                    userElement.innerHTML = `
+                        <h3>${columns[0]}</h3>
+                        <p>Quantity: ${columns[1]}</p>
+                        <p>Error: ${columns[2]}</p>
+                        <p>Source: ${columns[2]}</p>
+                        <hr>
+                    `;
+                    contentDiv.appendChild(userElement);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+      
     </div>
     <table class="sponsors">
       <tbody>
