@@ -25,19 +25,19 @@
         text-align: left;
       }
       .csv-table td {
-        width: 25%; /* Adjust the width as needed */
+        width: 20%; /* Adjust the width as needed */
       }
       .csv-table .col1 {
         width: 20%; /* Adjust the width for the first column */
       }
       .csv-table .col2 {
-        width: 30%; /* Adjust the width for the second column */
+        width: 20%; /* Adjust the width for the second column */
       }
       .csv-table .col3 {
-        width: 25%; /* Adjust the width for the third column */
+        width: 20%; /* Adjust the width for the third column */
       }
       .csv-table .col4 {
-        width: 25%; /* Adjust the width for the fourth column */
+        width: 20%; /* Adjust the width for the fourth column */
       }
     </style>
   </head>
@@ -87,7 +87,7 @@
         const rows = csvText.split('\n').map(row => row.split(','));
 
         const table = document.createElement('table');
-        table.border = 1;
+        table.className = 'csv-table'; // Add class to the table
 
         rows.forEach((row, rowIndex) => {
           const tr = document.createElement('tr');
