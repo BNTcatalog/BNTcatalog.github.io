@@ -6,12 +6,12 @@
         <div class="col-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-dark text-white">
-                    <h2 class="mb-0">🌟 {{ star.name }} 详细信息</h2>
+                    <h2 class="mb-0">🌟 {{ star.name }} Details</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4 class="card-title text-primary">基本信息</h4>
+                            <h4 class="card-title text-primary">Basic Information</h4>
                             <table class="table table-borderless">
                                 {% for key, value in star.items() %}
                                     {% if value and key != 'id' %}
@@ -24,18 +24,18 @@
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="card-title text-primary">星星特征</h4>
+                            <h4 class="card-title text-primary">Star Characteristics</h4>
                             <div class="list-group">
                                 <div class="list-group-item">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">温度</h5>
-                                        <small class="text-muted">{{ star.temperature or '未知' }} K</small>
+                                        <h5 class="mb-1">Temperature</h5>
+                                        <small class="text-muted">{{ star.temperature or 'Unknown' }} K</small>
                                     </div>
                                 </div>
                                 <div class="list-group-item">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">光度</h5>
-                                        <small class="text-muted">{{ star.luminosity or '未知' }} L☉</small>
+                                        <h5 class="mb-1">Luminosity</h5>
+                                        <small class="text-muted">{{ star.luminosity or 'Unknown' }} L☉</small>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-footer text-center">
                     <a href="{{ url_for('main.star_list') }}" class="btn btn-secondary">
-                        返回星星列表
+                        Back to Star List
                     </a>
                 </div>
             </div>
