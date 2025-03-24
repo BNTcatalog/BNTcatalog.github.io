@@ -11,7 +11,7 @@ def index():
     """
     return render_template('index.html')
 
-@main.route('/stars')
+@main.route('/stars.html')
 def star_list():
     """
     Display list of all stars
@@ -27,7 +27,7 @@ def star_list():
         columns=stars.columns.tolist(),
     )
 
-@main.route('/star/<int:star_id>')
+@main.route('/star/<int:star_id>.html')
 def star_details(star_id):
     """
     Display details of a specific star
